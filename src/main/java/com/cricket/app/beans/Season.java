@@ -1,10 +1,23 @@
 package com.cricket.app.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="season")
 public class Season {
+	@Id
+	@Column(name="season_id")
 	private int seasonId;
+	@Column(name="season_year")
 	private int seasonYear;
+	@Column(name="orange_cap_id")
 	private int orangeCapId;
+	@Column(name="purple_cap_id")
 	private int purpleCapId;
+	@Column(name="man_of_the_series_id")
 	private int manOfSeriesId;
 	
 	public Season() {
@@ -48,6 +61,11 @@ public class Season {
 	}
 	public void setManOfSeriesId(int manOfSeriesId) {
 		this.manOfSeriesId = manOfSeriesId;
+	}
+	@Override
+	public String toString() {
+		return "Season [seasonId=" + seasonId + ", seasonYear=" + seasonYear + ", orangeCapId=" + orangeCapId
+				+ ", purpleCapId=" + purpleCapId + ", manOfSeriesId=" + manOfSeriesId + "]";
 	}
 	
 	

@@ -2,6 +2,9 @@ package com.cricket.app.beans;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Match {
 	private int matchId;
 	private Date matchDate;

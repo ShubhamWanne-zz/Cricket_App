@@ -1,5 +1,8 @@
 package com.cricket.app.beans;
 
+import javax.persistence.Entity;
+
+@Entity
 public class PlayerMatch {
 	private int matchId;
 	private int playerId;
