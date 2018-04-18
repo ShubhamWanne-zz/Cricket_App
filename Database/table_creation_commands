@@ -6,7 +6,6 @@ CREATE TABLE player (
     Bowling_Skill text,
     Country text,
     Is_Umpire text,
-    faltu_delete text,
     PRIMARY KEY(Player_Id)
 );
 
@@ -25,8 +24,8 @@ CREATE TABLE season (
 
 CREATE TABLE team (
     Team_Id integer,
-    Team_Name varchar(30),
-    Team_Short_Code varchar(30),
+    Team_Name varchar(100),
+    Team_Short_Code varchar(100),
     PRIMARY KEY(Team_Id)
 );
 
@@ -38,20 +37,20 @@ CREATE TABLE match (
     Team_Name_Id integer,
     Opponent_Team_Id integer,
     Season_Id integer,
-    Venue_Name varchar(30),
+    Venue_Name varchar(100),
     Toss_Winner_Id integer,
-    Toss_Decision varchar(30),
+    Toss_Decision varchar(100),
     IS_Superover integer,
     IS_Result integer,
     Is_DuckWorthLewis integer,
-    Win_Type varchar(30),
+    Win_Type varchar(100),
     Won_By integer,
     Match_Winner_Id integer,
     Man_Of_The_Match_Id integer,
     First_Umpire_Id integer,
     Second_Umpire_Id integer,
-    City_Name varchar(30),
-    Host_Country varchar(30),
+    City_Name varchar(100),
+    Host_Country varchar(100),
     PRIMARY KEY(Match_Id)
 );
 
