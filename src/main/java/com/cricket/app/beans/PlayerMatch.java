@@ -1,13 +1,21 @@
 package com.cricket.app.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="palyer_match")
 public class PlayerMatch {
+	@Column(name="match_id")
 	private int matchId;
+	@Column(name="player_id")
 	private int playerId;
+	@Column(name="temp_id")
 	private int teamId;
+	@Column(name="is_keeper")
 	private int isKeeper;
+	@Column(name="is_captain")
 	private int isCaptian;
 	
 	public PlayerMatch() {

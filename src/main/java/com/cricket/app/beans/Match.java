@@ -2,28 +2,50 @@ package com.cricket.app.beans;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="match")
 public class Match {
+	@Column(name="match_id")
 	private int matchId;
+	@Column(name="match_date")
 	private Date matchDate;
+	@Column(name="team_name_id")
 	private int teamNameId;
+	@Column(name="opponent_team_id")
 	private int opponentTeamId;
+	@Column(name="season_id")
 	private int seasonId;
+	@Column(name="venue_name")
 	private String venueName;
+	@Column(name="toss_winner_id")
 	private int tossWinningId;
+	@Column(name="toss_decision")
 	private String tossDecision;
+	@Column(name="is_superover")
 	private int isSuperOver;
+	@Column(name="is_result")
 	private int isResult;
+	@Column(name="is_duckworthlewis")
 	private int isDuckworthlewis;
+	@Column(name="win_type")
 	private String winType;
+	@Column(name="won_by")
 	private int wonBy;
+	@Column(name="match_winner_id")
 	private int matchWinnerId;
+	@Column(name="man_of_the_match_id")
 	private int manOfTheMatchId;
+	@Column(name="first_umpire_id")
 	private int firstUmpireId;
+	@Column(name="second_umpire_id")
 	private int secondUmpireId;
+	@Column(name="city_name")
 	private String cityName;
+	@Column(name="host_country")
 	private String hostCountry;
 	
 	public Match() {

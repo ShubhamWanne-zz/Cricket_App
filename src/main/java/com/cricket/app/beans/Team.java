@@ -1,11 +1,17 @@
 package com.cricket.app.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="team")
 public class Team {
+	@Column(name="team_id")
 	private int teamId;
+	@Column(name="team_name")
 	private String teamName;
+	@Column(name="team_short_code")
 	private String teamShortName;
 	
 	public Team() {

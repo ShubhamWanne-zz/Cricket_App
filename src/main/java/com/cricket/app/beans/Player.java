@@ -2,16 +2,26 @@ package com.cricket.app.beans;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="player")
 public class Player {
+	@Column(name="player_id")
 	private int playerId;
+	@Column(name="player_name")
 	private String playerName;
+	@Column(name="dob")
 	private Date dob;
+	@Column(name="batting_hand")
 	private String battingHand;
+	@Column(name="bowling_skill")
 	private String bowlingSkill;
+	@Column(name="country")
 	private String country;
+	@Column(name="is_umpire")
 	private int isUmpire;
 	
 	public Player() {
