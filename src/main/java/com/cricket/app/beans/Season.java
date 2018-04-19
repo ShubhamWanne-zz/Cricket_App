@@ -10,15 +10,15 @@ import javax.persistence.Table;
 public class Season {
 	@Id
 	@Column(name="season_id")
-	private int seasonId;
+	private Integer seasonId;
 	@Column(name="season_year")
-	private int seasonYear;
+	private Integer seasonYear;
 	@Column(name="orange_cap_id")
-	private int orangeCapId;
+	private Integer orangeCapId;
 	@Column(name="purple_cap_id")
-	private int purpleCapId;
+	private Integer purpleCapId;
 	@Column(name="man_of_the_series_id")
-	private int manOfSeriesId;
+	private Integer manOfSeriesId;
 	
 	public Season() {
 		super();

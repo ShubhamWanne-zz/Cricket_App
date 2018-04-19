@@ -5,12 +5,18 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="match")
+@NamedQueries({
+	@NamedQuery(name="RecordsByTeamID",query = "FROM Match M where M.teamNameId = :teamID or M.opponentTeamId= :teamID"),
+	@NamedQuery(name="RecordsByMatchID",query = "FROM Match M where M.matchId = :matchID")
+})
 public class Match {
 	@Id
 	@Column(name="match_id")
@@ -234,6 +240,17 @@ public class Match {
 	public void setHostCountry(String hostCountry) {
 		this.hostCountry = hostCountry;
 	}
-	
+	@Override
+	public String toString() {
+		return "Match [matchId=" + matchId + ", matchDate=" + matchDate + ", teamNameId=" + teamNameId
+				+ ", opponentTeamId=" + opponentTeamId + ", seasonId=" + seasonId + ", venueName=" + venueName
+				+ ", tossWinningId=" + tossWinningId + ", tossDecision=" + tossDecision + ", isSuperOver=" + isSuperOver
+				+ ", isResult=" + isResult + ", isDuckworthlewis=" + isDuckworthlewis + ", winType=" + winType
+				+ ", wonBy=" + wonBy + ", matchWinnerId=" + matchWinnerId + ", manOfTheMatchId=" + manOfTheMatchId
+				+ ", firstUmpireId=" + firstUmpireId + ", secondUmpireId=" + secondUmpireId + ", cityName=" + cityName
+				+ ", hostCountry=" + hostCountry + "]";
+	}
+
+
 	
 }

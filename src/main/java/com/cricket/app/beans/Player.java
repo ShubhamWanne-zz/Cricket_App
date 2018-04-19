@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 public class Player {
 	@Id
 	@Column(name="player_id")
-	private int playerId;
+	private Integer playerId;
 	@Column(name="player_name")
 	private String playerName;
 	@Column(name="dob")
@@ -27,7 +27,7 @@ public class Player {
 	@Column(name="country")
 	private String country;
 	@Column(name="is_umpire")
-	private int isUmpire;
+	private Integer isUmpire;
 	
 	public Player() {
 		super();
@@ -99,6 +99,13 @@ public class Player {
 
 	public void setIsUmpire(int isUmpire) {
 		this.isUmpire = isUmpire;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [playerId=" + playerId + ", playerName=" + playerName + ", dob=" + dob + ", battingHand="
+				+ battingHand + ", bowlingSkill=" + bowlingSkill + ", country=" + country + ", isUmpire=" + isUmpire
+				+ "]";
 	}
 	
 	

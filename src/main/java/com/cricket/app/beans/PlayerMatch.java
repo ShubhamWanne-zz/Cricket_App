@@ -10,16 +10,16 @@ import javax.persistence.Table;
 public class PlayerMatch {
 	@Id
 	@Column(name="match_id")
-	private int matchId;
+	private Integer matchId;
 	//Player Id should also be primary key, will have to add composite id in future
 	@Column(name="player_id")
-	private int playerId;
-	@Column(name="temp_id")
-	private int teamId;
+	private Integer playerId;
+	@Column(name="team_id")
+	private Integer teamId;
 	@Column(name="is_keeper")
-	private int isKeeper;
+	private Integer isKeeper;
 	@Column(name="is_captain")
-	private int isCaptian;
+	private Integer isCaptian;
 	
 	public PlayerMatch() {
 		super();
@@ -72,6 +72,12 @@ public class PlayerMatch {
 
 	public void setIsCaptian(int isCaptian) {
 		this.isCaptian = isCaptian;
+	}
+
+	@Override
+	public String toString() {
+		return "PlayerMatch [matchId=" + matchId + ", playerId=" + playerId + ", teamId=" + teamId + ", isKeeper="
+				+ isKeeper + ", isCaptian=" + isCaptian + "]";
 	}
 	
 }

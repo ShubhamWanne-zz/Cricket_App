@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Team {
 	@Id
 	@Column(name="team_id")
-	private int teamId;
+	private Integer teamId;
 	@Column(name="team_name")
 	private String teamName;
 	@Column(name="team_short_code")
@@ -49,6 +49,11 @@ public class Team {
 
 	public void setTeamShortName(String teamShortName) {
 		this.teamShortName = teamShortName;
+	}
+
+	@Override
+	public String toString() {
+		return "Team [teamId=" + teamId + ", teamName=" + teamName + ", teamShortName=" + teamShortName + "]";
 	}
 	
 }
