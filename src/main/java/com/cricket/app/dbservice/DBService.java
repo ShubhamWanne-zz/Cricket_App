@@ -5,7 +5,6 @@ import org.hibernate.cfg.Configuration;
 
 public class DBService {
 	private SessionFactory sessionFactory;
-
 	public void startSessionFactory(){
 		try{
 			sessionFactory = new Configuration().configure().buildSessionFactory();

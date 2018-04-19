@@ -19,7 +19,7 @@ public class App
 		PropertyConfigurator.configure("log4j.properties");
 	}
     public static void main( String[] args ){
-    	logger.info("************Application Started");
+    	logger.info("************Application Started*****************");
     	DBService dbservice = new DBService();
     	dbservice.startSessionFactory();
     	SessionFactory sessionFactory = dbservice.getSessionFactory();
