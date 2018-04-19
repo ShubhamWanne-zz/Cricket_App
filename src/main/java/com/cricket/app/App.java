@@ -6,10 +6,10 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 
-import com.cricket.app.beans.Match;
+import com.cricket.app.dbservice.DBResourceUtil;
 import com.cricket.app.dbservice.DBService;
+import com.cricket.app.statsbeans.MatchTeam;
 
 public class App 
 {
@@ -17,8 +17,7 @@ public class App
 	static{
 		PropertyConfigurator.configure("log4j.properties");
 	}
-	@SuppressWarnings("unchecked")
-    public static void main( String[] args ){
+	public static void main( String[] args ){
     	logger.info("************Application Started*****************");
     	DBService dbservice = new DBService();
     	dbservice.startSessionFactory();
@@ -27,11 +26,10 @@ public class App
     	try{
 	    	session = sessionFactory.openSession();
 	    	session.beginTransaction();
-//			Query<Match> query = session.getNamedQuery("RecordsByTeamID");
-			Query<Match> query = session.getNamedQuery("RecordsByMatchID");
-	    	query.setParameter("matchID", 335991);
-	    	List<Match> result = query.list();
-	    	for(Match m : (List<Match>)result){
+	    	
+	    	DBResourceUtil dbResourceUtil = new DBResourceUtil();
+	    	List<MatchTeam> matchTeamList = dbResourceUtil.getData(1, session);
+	    	for(MatchTeam m :  matchTeamList){
 	    		logger.info(m);
 	    	}
 	    	session.getTransaction().commit();
