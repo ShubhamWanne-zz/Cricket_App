@@ -2,13 +2,16 @@ package com.cricket.app.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="palyer_match")
+@Table(name="player_match")
 public class PlayerMatch {
+	@Id
 	@Column(name="match_id")
 	private int matchId;
+	//Player Id should also be primary key, will have to add composite id in future
 	@Column(name="player_id")
 	private int playerId;
 	@Column(name="temp_id")

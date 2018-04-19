@@ -4,16 +4,21 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="player")
 public class Player {
+	@Id
 	@Column(name="player_id")
 	private int playerId;
 	@Column(name="player_name")
 	private String playerName;
 	@Column(name="dob")
+	@Temporal(TemporalType.DATE)
 	private Date dob;
 	@Column(name="batting_hand")
 	private String battingHand;

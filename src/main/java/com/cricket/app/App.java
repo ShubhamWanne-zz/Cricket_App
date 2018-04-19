@@ -1,17 +1,14 @@
 package com.cricket.app;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.cricket.app.beans.Season;
 import com.cricket.app.dbservice.DBService;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
 	public static Logger logger = Logger.getLogger(App.class);
@@ -27,8 +24,12 @@ public class App
     	try{
 	    	session = sessionFactory.openSession();
 	    	session.beginTransaction();
-	    	Season season = session.get(Season.class, 1);
-	    	logger.info(season);
+	    	
+	    	String matchQuery = "FROM Match";
+	    	List result = session.createQuery(matchQuery).list();
+	    	
+//	    	Season season = session.get(Season.class, 1);
+	    	logger.info(result);
 	    	session.getTransaction().commit();
     	}catch(Exception e){
     		e.printStackTrace();

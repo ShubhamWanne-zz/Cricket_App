@@ -4,45 +4,50 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="match")
 public class Match {
+	@Id
 	@Column(name="match_id")
-	private int matchId;
+	private Integer matchId;
+	@Temporal(TemporalType.DATE)
 	@Column(name="match_date")
 	private Date matchDate;
 	@Column(name="team_name_id")
-	private int teamNameId;
+	private Integer teamNameId;
 	@Column(name="opponent_team_id")
-	private int opponentTeamId;
+	private Integer opponentTeamId;
 	@Column(name="season_id")
-	private int seasonId;
+	private Integer seasonId;
 	@Column(name="venue_name")
 	private String venueName;
 	@Column(name="toss_winner_id")
-	private int tossWinningId;
+	private Integer tossWinningId;
 	@Column(name="toss_decision")
 	private String tossDecision;
 	@Column(name="is_superover")
-	private int isSuperOver;
+	private Integer isSuperOver;
 	@Column(name="is_result")
-	private int isResult;
+	private Integer isResult;
 	@Column(name="is_duckworthlewis")
-	private int isDuckworthlewis;
+	private Integer isDuckworthlewis;
 	@Column(name="win_type")
 	private String winType;
-	@Column(name="won_by")
-	private int wonBy;
+	@Column(name="won_by",nullable=true)
+	private Integer wonBy;
 	@Column(name="match_winner_id")
-	private int matchWinnerId;
+	private Integer matchWinnerId;
 	@Column(name="man_of_the_match_id")
-	private int manOfTheMatchId;
+	private Integer manOfTheMatchId;
 	@Column(name="first_umpire_id")
-	private int firstUmpireId;
+	private Integer firstUmpireId;
 	@Column(name="second_umpire_id")
-	private int secondUmpireId;
+	private Integer secondUmpireId;
 	@Column(name="city_name")
 	private String cityName;
 	@Column(name="host_country")
