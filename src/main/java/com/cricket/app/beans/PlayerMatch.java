@@ -3,10 +3,17 @@ package com.cricket.app.beans;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="player_match")
+@NamedQueries({
+	@NamedQuery(name="getMatchData",query="select PM from PlayerMatch PM inner join PM.team inner join PM.player where PM.matchId = :matchID")
+})
 public class PlayerMatch {
 	@Id
 	@Column(name="match_id")
@@ -20,6 +27,13 @@ public class PlayerMatch {
 	private Integer isKeeper;
 	@Column(name="is_captain")
 	private Integer isCaptian;
+	
+	@ManyToOne
+	@JoinColumn(name="team_id",insertable=false,updatable=false)
+	private Team team;
+	@ManyToOne
+	@JoinColumn(name="player_id",insertable=false,updatable=false)
+	private Player player;
 	
 	public PlayerMatch() {
 		super();
@@ -74,10 +88,27 @@ public class PlayerMatch {
 		this.isCaptian = isCaptian;
 	}
 
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
 	@Override
 	public String toString() {
 		return "PlayerMatch [matchId=" + matchId + ", playerId=" + playerId + ", teamId=" + teamId + ", isKeeper="
-				+ isKeeper + ", isCaptian=" + isCaptian + "]";
+				+ isKeeper + ", isCaptian=" + isCaptian + ", team=" + team + ", player=" + player + "]";
 	}
+
 	
 }

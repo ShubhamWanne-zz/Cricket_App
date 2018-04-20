@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -14,8 +16,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="match")
 @NamedQueries({
-	@NamedQuery(name="RecordsByTeamID",query = "FROM Match M where M.teamNameId = :teamID or M.opponentTeamId= :teamID"),
-	@NamedQuery(name="RecordsByMatchID",query = "FROM Match M where M.matchId = :matchID")
+	@NamedQuery(name="RecordsByTeamIDvsOpponentID",query = "select m from Match m inner join m.team where m.teamNameId in (:teamID,:opponentID ) and m.opponentTeamId in (:teamID,:opponentID)"),
+	@NamedQuery(name="RecordsByTeamID",query = "select m from Match m  inner join m.team where m.teamNameId = :teamID")
 })
 public class Match {
 	@Id
@@ -58,6 +60,10 @@ public class Match {
 	private String cityName;
 	@Column(name="host_country")
 	private String hostCountry;
+	
+	@ManyToOne
+	@JoinColumn(name="team_name_id",updatable=false,insertable=false)
+	private Team team;
 	
 	public Match() {
 		super();
@@ -240,6 +246,9 @@ public class Match {
 	public void setHostCountry(String hostCountry) {
 		this.hostCountry = hostCountry;
 	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "Match [matchId=" + matchId + ", matchDate=" + matchDate + ", teamNameId=" + teamNameId
@@ -248,7 +257,15 @@ public class Match {
 				+ ", isResult=" + isResult + ", isDuckworthlewis=" + isDuckworthlewis + ", winType=" + winType
 				+ ", wonBy=" + wonBy + ", matchWinnerId=" + matchWinnerId + ", manOfTheMatchId=" + manOfTheMatchId
 				+ ", firstUmpireId=" + firstUmpireId + ", secondUmpireId=" + secondUmpireId + ", cityName=" + cityName
-				+ ", hostCountry=" + hostCountry + "]";
+				+ ", hostCountry=" + hostCountry + ", team=" + team + "]";
+	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 
