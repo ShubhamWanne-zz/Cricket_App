@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 @Table(name="match")
 @NamedQueries({
 	@NamedQuery(name="RecordsByTeamIDvsOpponentID",query = "select m from Match m inner join m.team where m.teamNameId in (:teamID,:opponentID ) and m.opponentTeamId in (:teamID,:opponentID)"),
-	@NamedQuery(name="RecordsByTeamID",query = "select m from Match m  inner join m.team where m.teamNameId = :teamID")
+	@NamedQuery(name="RecordsByTeamID",query = "select m from Match m  inner join m.team where m.teamNameId = :teamID"),
 })
 public class Match {
 	@Id
