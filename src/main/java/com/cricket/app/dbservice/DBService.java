@@ -21,7 +21,6 @@ public class DBService {
 		if(sessionFactory!=null){
 			sessionFactory.close();
 		}
-		System.exit(0);
 	}
 	
 	public void startSession() {

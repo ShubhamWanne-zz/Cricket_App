@@ -10,14 +10,15 @@ import com.cricket.app.beans.Match;
 import com.cricket.app.beans.PlayerMatch;
 
 public class DBResourceUtil {
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<Match> getData(int team_id,Session session){
+	public List<Match> getTeamStats(int team_id,Session session){
 		Query query = session.createNamedQuery("RecordsByTeamID", Match.class);
 		query.setParameter("teamID", team_id);
 		return query.list();
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<Match> getData(int team_id,int opponent_id,Session session){
+	public List<Match> getTeamComparisonStats(int team_id,int opponent_id,Session session){
 		Query query = session.createNamedQuery("RecordsByTeamIDvsOpponentID", Match.class);
 		query.setParameter("teamID", team_id);
 		query.setParameter("opponentID", opponent_id);
