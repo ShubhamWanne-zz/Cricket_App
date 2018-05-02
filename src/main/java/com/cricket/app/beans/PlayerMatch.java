@@ -12,7 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="player_match")
 @NamedQueries({
-	@NamedQuery(name="getMatchData",query="select PM from PlayerMatch PM inner join PM.team inner join PM.player where PM.matchId = :matchID")
+	@NamedQuery(name="getMatchData",query="select PM from PlayerMatch PM "
+			+ "inner join Team T on PM.teamId = T.teamId "
+			+ "inner join Player P on PM.playerId = P.playerId "
+			+ "where PM.matchId = :matchID")
 })
 public class PlayerMatch {
 	@Id
