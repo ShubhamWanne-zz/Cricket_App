@@ -1,8 +1,8 @@
 package com.cricket.app.beans;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -12,20 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="player_match")
 @NamedQueries({
-	@NamedQuery(name="getMatchData",query="select PM from PlayerMatch PM "
-			+ "inner join Team T on PM.teamId = T.teamId "
-			+ "inner join Player P on PM.playerId = P.playerId "
-			+ "where PM.matchId = :matchID")
+	@NamedQuery(name="getMatchData",query="select PM from PlayerMatch PM inner join PM.team inner join PM.player where PM.id.matchId = :matchID")
 })
 public class PlayerMatch {
-	@Id
-	@Column(name="match_id")
-	private Integer matchId;
-	//Player Id should also be primary key, will have to add composite id in future
-	@Column(name="player_id")
-	private Integer playerId;
-	@Column(name="team_id")
-	private Integer teamId;
+	@EmbeddedId
+	private PKPlayerMatch id;
 	@Column(name="is_keeper")
 	private Integer isKeeper;
 	@Column(name="is_captain")
@@ -42,52 +33,36 @@ public class PlayerMatch {
 		super();
 	}
 
-	public PlayerMatch(int matchId, int playerId, int teamId, int isKeeper, int isCaptian) {
+	public PlayerMatch(PKPlayerMatch id, Integer isKeeper, Integer isCaptian, Team team, Player player) {
 		super();
-		this.matchId = matchId;
-		this.playerId = playerId;
-		this.teamId = teamId;
+		this.id = id;
 		this.isKeeper = isKeeper;
 		this.isCaptian = isCaptian;
+		this.team = team;
+		this.player = player;
 	}
 
-	public int getMatchId() {
-		return matchId;
+	public PKPlayerMatch getId() {
+		return id;
 	}
 
-	public void setMatchId(int matchId) {
-		this.matchId = matchId;
+	public void setId(PKPlayerMatch id) {
+		this.id = id;
 	}
 
-	public int getPlayerId() {
-		return playerId;
-	}
-
-	public void setPlayerId(int playerId) {
-		this.playerId = playerId;
-	}
-
-	public int getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(int teamId) {
-		this.teamId = teamId;
-	}
-
-	public int getIsKeeper() {
+	public Integer getIsKeeper() {
 		return isKeeper;
 	}
 
-	public void setIsKeeper(int isKeeper) {
+	public void setIsKeeper(Integer isKeeper) {
 		this.isKeeper = isKeeper;
 	}
 
-	public int getIsCaptian() {
+	public Integer getIsCaptian() {
 		return isCaptian;
 	}
 
-	public void setIsCaptian(int isCaptian) {
+	public void setIsCaptian(Integer isCaptian) {
 		this.isCaptian = isCaptian;
 	}
 
@@ -109,9 +84,7 @@ public class PlayerMatch {
 
 	@Override
 	public String toString() {
-		return "PlayerMatch [matchId=" + matchId + ", playerId=" + playerId + ", teamId=" + teamId + ", isKeeper="
-				+ isKeeper + ", isCaptian=" + isCaptian + ", team=" + team + ", player=" + player + "]";
+		return "PlayerMatch [id=" + id + ", isKeeper=" + isKeeper + ", isCaptian=" + isCaptian + ", team=" + team
+				+ ", player=" + player + "]";
 	}
-
-	
-}
+} 

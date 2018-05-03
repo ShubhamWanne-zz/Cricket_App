@@ -7,7 +7,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.cricket.app.beans.Match;
+import com.cricket.app.beans.PlayerMatch;
 import com.cricket.app.dbservice.DBResourceUtil;
 import com.cricket.app.dbservice.DBService;
 
@@ -17,7 +17,7 @@ public class App
 	static{
 		PropertyConfigurator.configure("log4j.properties");
 	}
-	/*public static void main( String[] args ){
+	public static void main( String[] args ){
     	logger.info("************Application Started*****************");
     	DBService dbservice = new DBService();
     	dbservice.startSessionFactory();
@@ -28,9 +28,14 @@ public class App
 	    	session.beginTransaction();
 	    	DBResourceUtil dbResourceUtil = new DBResourceUtil();
 	    	int team_id = 1,opponent_team_id=3;
-	    	List<Match> matchTeamList = dbResourceUtil.getData(team_id,opponent_team_id,session);
+//	    	List<Match> matchTeamList = dbResourceUtil.getData(team_id,opponent_team_id,session);
+//	    	
+//	    	for(Match m :  matchTeamList){
+//	    		logger.info(m);
+//	    	}
 	    	
-	    	for(Match m :  matchTeamList){
+	    	List<PlayerMatch> playerMatchList = dbResourceUtil.getMatchData(335987, session);
+	    	for(PlayerMatch m : playerMatchList) {
 	    		logger.info(m);
 	    	}
 	    	session.getTransaction().commit();
@@ -43,5 +48,5 @@ public class App
     	}finally {
 			dbservice.closeSessionFactory();
 		}
-    }*/
+    }
 }
